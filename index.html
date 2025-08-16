@@ -1,115 +1,206 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hacemos crecer tu marca | Marketing, Diseño & Web</title>
-  <meta name="description" content="Marketing digital, diseño gráfico y creación de sitios web en un solo lugar. Estrategias que convierten, diseños que impactan y webs rápidas listas para vender." />
-  <meta name="theme-color" content="#7c3aed" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='12' fill='url(%23g)'/%3E%3Cpath d='M16 39c9 5 23 5 32 0M16 25c9-5 23-5 32 0' stroke='white' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Hacemos crecer tu marca | Marketing, Diseño & Web" />
-  <meta property="og:description" content="Todo lo que tu marca necesita: Marketing digital, diseño gráfico y web profesional." />
-  <meta property="og:image" content="https://dummyimage.com/1200x630/0b0b12/ffffff.png&text=Marketing+%7C+Dise%C3%B1o+%7C+Web" />
-  <meta property="og:locale" content="es_AR" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LandingPage - Marketing Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ... estilos igual que antes ... */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #fff; scroll-behavior: smooth; overflow-x: hidden; }
+
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; font-weight: bold; }
+
+    /* Header con gradiente animado */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(-45deg, #6C63FF, #00C8FF, #FF6C63, #FFB76C);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.4); animation: fadeInDown 1s ease forwards; }
+    header p { font-size: 1.3rem; margin-bottom: 30px; text-shadow: 1px 1px 8px rgba(0,0,0,0.3); animation: fadeInUp 1s ease forwards 0.5s; }
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: #fff;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease forwards 1s;
+    }
+    .btn-whatsapp:hover {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Secciones parallax */
+    section {
+      min-height: 80vh;
+      padding: 80px 20px;
+      text-align: center;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; text-shadow: 1px 1px 8px rgba(0,0,0,0.5); }
+    section p { max-width: 800px; margin: 0 auto 20px; font-size: 1.1rem; }
+
+    /* Servicios */
+    #servicios { background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .service {
+      background: rgba(0,0,0,0.6);
+      padding: 30px 20px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+    .service:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    }
+    .service h3 { margin-bottom: 15px; color: #FFD700; }
+    .service p { font-size: 1rem; color: #fff; }
+
+    /* Testimonios */
+    #testimonios { background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover; }
+    .testimonial { text-align: center; margin-bottom: 30px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 15px; display: inline-block; max-width: 600px; }
+    .testimonial p { font-style: italic; margin-bottom: 10px; }
+    .testimonial span { font-weight: bold; color: #FFD700; }
+
+    /* Contacto */
+    #contacto { background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover; }
+
+    /* Footer */
+    footer { background: #111; padding: 30px 20px; text-align: center; color: #fff; }
+
+    /* Chat flotante WhatsApp */
+    .chat-flotante {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 50px;
+      padding: 15px 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .chat-flotante:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      header h1 { font-size: 2rem; }
+      section h2 { font-size: 2rem; }
+      .chat-flotante { padding: 12px 16px; font-size: 0.9rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Header -->
   <header>
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Inicio">
-        <span class="brand-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 12c5 3 11 3 16 0" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M4 7c5-3 11-3 16 0" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <span>Tu&nbsp;Marca</span>
-      </a>
-      <nav class="nav-links" aria-label="Principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn" href="https://wa.me/5491165613013?text=Hola%20%F0%9F%91%8B%20Quiero%20info%20sobre%20Marketing%2C%20Dise%C3%B1o%20y%20Web" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">Pedir presupuesto</a>
-      </nav>
-    </div>
-  </header>  <main id="inicio">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Lanzá tu marca con impacto</span>
-          <h1>Hacemos crecer tu marca: <br>Marketing Digital, Diseño & Web</h1>
-          <p class="lead">Un solo equipo para todo: estrategias que convierten, diseños que se recuerdan y sitios web rápidos listos para vender. Simple, medible y potente.</p>
-          <div class="cta">
-            <a class="btn" href="https://wa.me/5491165613013?text=Hola%20%F0%9F%91%8B%20Quiero%20un%20presupuesto%20para%20mi%20marca" target="_blank" rel="noopener">Hablar por WhatsApp</a>
-            <a class="btn btn-outline" href="#servicios">Ver servicios</a>
-          </div>
-          <div class="kpis" style="margin-top:22px">
-            <div class="kpi"><div class="muted">Entrega inicial</div><b>7-14 días</b></div>
-            <div class="kpi"><div class="muted">Respuesta</div><b>&lt;24 h</b></div>
-            <div class="kpi"><div class="muted">Soporte</div><b>WhatsApp</b></div>
-          </div>
-        </div>
-        <!-- ... resto igual ... -->
-      </div>
-    </section><!-- ... resto de secciones igual ... -->
+    <h1>LandingPage</h1>
+    <p>Marketing Digital, Diseño Web y Contenido de Alto Impacto</p>
+    <a href="https://wa.me/541165613013" target="_blank"><button class="btn-whatsapp">Contactar por WhatsApp</button></a>
+  </header>
 
-<section id="contacto">
-  <div class="container">
-    <h2 class="section-title">Contacto</h2>
-    <p class="muted">Respondemos en menos de 24 horas.</p>
-    <div class="grid grid-3" style="margin-top:18px">
-      <div class="card">
-        <h3>WhatsApp</h3>
-        <p class="muted">Mensaje directo</p>
-        <a class="btn" href="https://wa.me/5491165613013?text=Hola%2C%20vengo%20desde%20tu%20web" target="_blank" rel="noopener">Abrir WhatsApp</a>
+  <!-- Servicios -->
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Creación de Páginas Web</h3>
+        <p>Páginas modernas, funcionales y adaptadas a móviles para destacar tu negocio 24/7.</p>
       </div>
-      <div class="card">
-        <h3>Email</h3>
-        <p class="muted">tuemail@dominio.com</p>
-        <a class="btn btn-outline" href="mailto:tuemail@dominio.com">Enviar correo</a>
+      <div class="service">
+        <h3>Gestión de Redes Sociales</h3>
+        <p>Manejo profesional de cuentas, contenido de alto engagement y análisis de resultados.</p>
       </div>
-      <div class="card">
-        <h3>Redes</h3>
-        <div class="tagrow">
-          <a class="chip" href="#" target="_blank" rel="noopener">Instagram</a>
-          <a class="chip" href="#" target="_blank" rel="noopener">Facebook</a>
-          <a class="chip" href="#" target="_blank" rel="noopener">TikTok</a>
-        </div>
+      <div class="service">
+        <h3>Diseño Gráfico</h3>
+        <p>Imágenes, banners, publicaciones y reels que captan la atención de tu audiencia.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  </main>  <footer>
-    <div class="container">
-      © <span id="y"></span> Tu Marca — Marketing · Diseño · Web. Hecho con ❤️ en Argentina.
+  <!-- Testimonios -->
+  <section id="testimonios">
+    <h2>Testimonios</h2>
+    <div class="testimonial">
+      <p>"Gracias a su trabajo, mis ventas online aumentaron significativamente en pocas semanas."</p>
+      <span>- Cliente Satisfecho</span>
     </div>
-  </footer>  <!-- Botón flotante WhatsApp -->  <a href="https://wa.me/5491165613013?text=Hola%20%F0%9F%91%8B%20me%20interesan%20sus%20servicios" class="fab" aria-label="WhatsApp" target="_blank" rel="noopener" style="position:fixed; right:18px; bottom:18px; z-index:60;">
-    <span style="display:inline-grid; place-items:center; width:60px; height:60px; border-radius:18px; background:linear-gradient(135deg,var(--brand-1),var(--brand-2)); border:1px solid rgba(255,255,255,.25); box-shadow:0 10px 30px rgba(124,58,237,.45)">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.13 7.55L4 21l1.95-3.8A8.5 8.5 0 1 1 20 11.5Z" stroke="#fff" stroke-width="2"/><path d="M8.5 9.5c.5 2 3 4 4.5 4.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-    </span>
-  </a>  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Tu Marca — Marketing Digital, Diseño & Web",
-    "areaServed": "Argentina",
-    "url": "https://TU-USUARIO.github.io",
-    "telephone": "+5491165613013",
-    "sameAs": [
-      "https://instagram.com/TU_USUARIO",
-      "https://facebook.com/TU_USUARIO"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "AR"
-    }
-  }
-  </script></body>
+    <div class="testimonial">
+      <p>"Profesionales, rápidos y creativos. Totalmente recomendados para tu negocio."</p>
+      <span>- Empresa XYZ</span>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Escribime directamente por WhatsApp o envíame un correo a <strong>landingpageok1@gmail.com</strong> y comencemos a impulsar tu negocio.</p>
+    <a href="https://wa.me/541165613013" target="_blank"><button class="btn-whatsapp">Enviar WhatsApp</button></a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 LandingPage | Todos los derechos reservados
+  </footer>
+
+  <!-- Chat flotante -->
+  <a href="https://wa.me/541165613013" target="_blank" class="chat-flotante">
+    💬 Háblame
+  </a>
+
+  <!-- Script para animar secciones -->
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
 </html>
